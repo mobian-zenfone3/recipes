@@ -1,5 +1,7 @@
 #!/bin/sh
 
+set -e
+
 BOOTSTART="$1"
 
 wget -O /u-boot-librem5.imx \
