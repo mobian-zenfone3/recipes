@@ -84,16 +84,6 @@ actions:
     description: install miniramfs
     packages:
       - miniramfs
-
-  - action: run
-    description: Create miniramfs
-    chroot: true
-    command: /usr/sbin/update-miniramfs -u
-
-  - action: run
-    description: Export miniramfs
-    chroot: false
-    command: cp ${ROOTDIR}/boot/miniramfs ${ARTIFACTDIR}/{{ $image }}.miniramfs
 {{ end }}
 
   - action: run
