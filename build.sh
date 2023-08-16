@@ -77,7 +77,7 @@ case "${device}" in
     family="rockchip"
     ARGS="${ARGS} -t nonfree:true"
     # Encrypted / on PPP requires miniramfs
-    if [ "${installer}" ]; then
+    if [ "${installer}" ] || [ "${crypt_root}" = "1" ]; then
         miniramfs=1
     fi
     ;;
