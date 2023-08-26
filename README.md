@@ -39,15 +39,13 @@ You can use `./build.sh -d` to use the docker version of `debos`.
 
 ### Building QEMU image
 
-You can build a QEMU x86_64 image by adding the `-t amd64` (UEFI) or
-`-t amd64-legacy` (BIOS) flags to `build.sh`
+You can build a QEMU x86_64 image by adding the `-t amd64` flag to `build.sh`
 
 The resulting files are raw images. You can start qemu like so:
 
 ```
 qemu-system-x86_64 -drive format=raw,file=<imagefile.img> -enable-kvm -cpu host -vga virtio -m 2048 -smp cores=4 -bios <uefi-firmware>
 ```
-If you have built the BIOS image you can drop the `-bios <uefi-firmware>` flag.
 On a gentoo system f.e. the uefi firmware can be found under
 `/usr/share/edk2-ovmf/OVMF_CODE.fd`
 
