@@ -44,10 +44,9 @@ You can build a QEMU x86_64 image by adding the `-t amd64` flag to `build.sh`
 The resulting files are raw images. You can start qemu like so:
 
 ```
-qemu-system-x86_64 -drive format=raw,file=<imagefile.img> -enable-kvm -cpu host -vga virtio -m 2048 -smp cores=4 -bios <uefi-firmware>
+qemu-system-x86_64 -drive format=raw,file=<imagefile.img> -enable-kvm -cpu host -vga virtio -m 2048 -smp cores=4 -drive if=pflash,format=raw,readonly=on,file=/usr/share/OVMF/OVMF_CODE.fd
 ```
-On a gentoo system f.e. the uefi firmware can be found under
-`/usr/share/edk2-ovmf/OVMF_CODE.fd`
+UEFI firmware files are available in Debian thanks to the [OVMF](https://packages.debian.org/sid/all/ovmf/filelist) package. Comprehensive explanation about firmware files can be found at [OVMF project's repository](https://github.com/tianocore/edk2/tree/master/OvmfPkg).
 
 You may also want to convert the raw image to qcow2 format
 and resize it like this:
