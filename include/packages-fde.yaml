@@ -7,5 +7,4 @@ actions:
     recommends: false
     description: Install packages for full disk encryption
     packages:
-      - libblockdev-plugins-all
-      - osk-sdl
+      - unl0kr

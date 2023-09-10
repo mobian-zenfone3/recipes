@@ -54,5 +54,5 @@ EOF
 
 echo "Create crypttab"
 cat > $ROOTDIR/etc/crypttab << EOF
-root UUID=$rootfs none luks,keyscript=/usr/share/initramfs-tools/scripts/osk-sdl-keyscript
+root UUID=$rootfs none luks,keyscript=/usr/share/initramfs-tools/scripts/unl0kr-keyscript
 EOF
