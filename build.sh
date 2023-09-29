@@ -76,10 +76,6 @@ case "${device}" in
   "pinephonepro" )
     family="rockchip"
     ARGS="${ARGS} -t nonfree:true"
-    # Encrypted / on PPP requires miniramfs
-    if [ "${installer}" ] || [ "${crypt_root}" = "1" ]; then
-        miniramfs=1
-    fi
     ;;
   "pinetab" )
     family="sunxi"

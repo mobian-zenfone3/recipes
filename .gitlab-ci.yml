@@ -37,8 +37,6 @@ devicefs-pinephone-phosh:
     - rootfs-arm64-phosh
 
 devicefs-pinephonepro-phosh:
-  variables:
-    MOBIAN_MINIRAMFS: "true"
   extends:
     - .devicefs
     - .device-pinephonepro
