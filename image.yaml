@@ -14,6 +14,7 @@
 {{- $password := or .password "1234" -}}
 {{- $crypt_password := or .crypt_password $password -}}
 {{- $crypt_root := or .crypt_root "false" -}}
+{{- $bootonroot := or .bootonroot "false" }}
 
 architecture: {{ $architecture }}
 
@@ -36,6 +37,7 @@ actions:
       image: {{ $image }}
       imagesize: {{ $imagesize }}
       installer: "false"
+      bootonroot: {{ $bootonroot }}
 
   - action: filesystem-deploy
     description: Deploy filesystem onto image
@@ -45,11 +47,10 @@ actions:
   - action: run
     description: Encrypt root filesystem
     label: setup-luks
-    script: scripts/setup-luks.sh {{ $crypt_password }}
+    script: scripts/setup-luks.sh {{ $crypt_password }} {{ $bootonroot }}
 
   - action: recipe
     recipe: include/packages-fde.yaml
-
 {{ end }}
 
 {{ if eq $filesystem "f2fs" }}

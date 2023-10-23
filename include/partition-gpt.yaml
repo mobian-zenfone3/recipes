@@ -4,6 +4,7 @@
 {{- $imagesize := or .imagesize "6GB" }}
 {{- $bootstart := or .bootstart "1MiB" }}
 {{- $installer := or .installer "false" }}
+{{- $bootonroot := or .bootonroot "false" }}
 
 {{- $espend := $bootstart }}
 {{- $has_esp_partition := "false" }}
@@ -24,6 +25,10 @@
 {{- if eq $has_esp_partition "true" }}
 {{-   $espend = "256MiB" }}
 {{-   $rootstart = "768MiB" }}
+{{- end }}
+
+{{- if eq $bootonroot "true" }}
+{{-   $rootstart = $espend }}
 {{- end }}
 
 {{- $bootend := $rootstart }}
@@ -47,9 +52,11 @@ actions:
         partition: rootfs
 {{ end }}
         options: [ "x-systemd.growfs" ]
+{{ if ne $bootonroot "true" }}
       - mountpoint: /boot
         partition: boot
         options: [ "x-systemd.growfs" ]
+{{ end }}
 {{ if eq $has_esp_partition "true" }}
       - mountpoint: /boot/efi
         partition: esp
@@ -62,11 +69,13 @@ actions:
         end: {{ $espend }}
         flags: [ esp, boot ]
 {{ end }}
+{{ if ne $bootonroot "true" }}
       - name: boot
         fs: ext4
         start: {{ $espend }}
         end: {{ $bootend }}
         flags: [ boot ]
+{{ end }}
       - name: rootfs
 {{ if eq $installer "true" }}
         fs: {{ $filesystem }}
