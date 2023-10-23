@@ -90,7 +90,7 @@ case "${device}" in
     ;;
   "sdm845"|"sm7225" )
     family="qcom"
-    ARGS="${ARGS} -e MKE2FS_DEVICE_SECTSIZE:4096 -t nonfree:true"
+    ARGS="${ARGS} -e MKE2FS_DEVICE_SECTSIZE:4096 -t nonfree:true -t bootonroot:true"
     ;;
   "amd64" )
     arch="amd64"

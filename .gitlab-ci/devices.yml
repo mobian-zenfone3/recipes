@@ -44,7 +44,7 @@
   variables:
     MOBIAN_DEVICE_FAMILY: "qcom"
     MOBIAN_INCLUDE_NONFREE: "true"
-    MOBIAN_EXTRA_DEBOS_ARGS: "-e MKE2FS_DEVICE_SECTSIZE:4096"
+    MOBIAN_EXTRA_DEBOS_ARGS: "-e MKE2FS_DEVICE_SECTSIZE:4096 -t bootonroot:true"
 
 .device-sdm845:
   extends:

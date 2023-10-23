@@ -11,7 +11,7 @@ IMAGE="$1"
 
 BLKDEVS=$(parted -ms "${IMAGE}.img" unit s print | sed '/BYT;/d')
 BLKSIZE=$(echo "${BLKDEVS}" | head -1 | cut -d ':' -f 4)
-for label in boot rootfs; do
+for label in rootfs; do
     PARTSTART=$(echo "${BLKDEVS}" | grep "${label}" | cut -d ':' -f 2 | sed 's/s$//')
     PARTSIZE=$(echo "${BLKDEVS}" | grep "${label}" | cut -d ':' -f 4 | sed 's/s$//')
 
