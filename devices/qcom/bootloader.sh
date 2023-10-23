@@ -3,7 +3,7 @@
 DEVICE="$1"
 
 generate_bootimg() {
-    UUID="$1"
+    ROOTDEV="$1"
     SOC="$2"
     VENDOR="$3"
     MODEL="$4"
@@ -30,11 +30,15 @@ generate_bootimg() {
     # Create the bootimg as it's the only format recognized by the Android bootloader
     abootimg --create /bootimg-${FULLMODEL} -c kerneladdr=0x8000 \
         -c ramdiskaddr=0x1000000 -c secondaddr=0x0 -c tagsaddr=0x100 -c pagesize=4096 \
-        -c cmdline="mobile.root=UUID=${UUID} ${CMDLINE} init=/sbin/init ro quiet splash" \
+        -c cmdline="mobile.root=${ROOTDEV} ${CMDLINE} init=/sbin/init ro quiet splash" \
         -k /tmp/kernel-dtb -r /boot/initrd.img-${KERNEL_VERSION}
 }
 
-ROOTPART=$(findmnt -n -o UUID /)
+ROOTPART="UUID=$(findmnt -n -o UUID /)"
+if [ "${ROOTPART}" = "UUID=" ]; then
+    # This means we're using an encrypted rootfs
+    ROOTPART="/dev/mapper/root"
+fi
 KERNEL_VERSION=$(linux-version list)
 
 case "${DEVICE}" in
