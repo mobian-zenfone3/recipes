@@ -87,6 +87,16 @@ actions:
       - miniramfs
 {{ end }}
 
+{{ if eq $crypt_root "true" }}
+# When building with fakemachine, the initrd crypttab is empty
+# We need this additional step which fully mounts /dev so cryptsetup
+# can create a proper crypttab
+  - action: run
+    description: Force initramfs update
+    chroot: true
+    script: scripts/update-initramfs.sh
+{{ end }}
+
   - action: run
     description: Cleanup filesystem
     chroot: true
