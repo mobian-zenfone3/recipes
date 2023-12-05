@@ -44,7 +44,7 @@ variables:
   IMAGES_ROOT: /var/www/images
   IMAGES_CI_ROOT: /var/www/ci-images
   MOBIAN_IMAGES_HOST: mobian.org
-  MOBIAN_CACHE_HOST: amd64-ssd.runner.mobian.org
+  MOBIAN_CACHE_HOST: mobian.org
 
 .arch-amd64:
   variables:
