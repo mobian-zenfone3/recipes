@@ -88,7 +88,10 @@ case "${device}" in
     family="librem5"
     ARGS="${ARGS} -t bootstart:8MiB"
     ;;
-  "sdm845"|"sm7225" )
+  "sdm845"|"sm7225"|"qcom-wip" )
+    if [ "${device}" = "qcom-wip" ]; then
+      device="wip"
+    fi
     family="qcom"
     SECTSIZE="$(tomlq -r '.bootimg.pagesize' devices/qcom/configs/${device}.toml)"
     ARGS="${ARGS} -e MKE2FS_DEVICE_SECTSIZE:${SECTSIZE} -t nonfree:true -t bootonroot:true"
