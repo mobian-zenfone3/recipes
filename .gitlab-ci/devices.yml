@@ -44,7 +44,19 @@
   variables:
     MOBIAN_DEVICE_FAMILY: "qcom"
     MOBIAN_INCLUDE_NONFREE: "true"
-    MOBIAN_EXTRA_DEBOS_ARGS: "-e MKE2FS_DEVICE_SECTSIZE:4096 -t bootonroot:true"
+  before_script:
+    # Replicate the default before_script as we can't otherwise include it
+    - chmod 0400 "$MOBIAN_CI_SSH_KEY"
+    - eval $(ssh-agent -s)
+    - ssh-add "$MOBIAN_CI_SSH_KEY"
+    - |
+      if [ -f "$MOBIAN_SSH_KEY" ]; then
+          chmod 0400 "$MOBIAN_SSH_KEY"
+          ssh-add "$MOBIAN_SSH_KEY"
+      fi
+    # Those are the qcom-specific bits
+    - SECTSIZE="$(tomlq -r '.bootimg.pagesize' devices/qcom/configs/${MOBIAN_DEVICE_NAME}.toml)"
+    - MOBIAN_EXTRA_DEBOS_ARGS="-e MKE2FS_DEVICE_SECTSIZE:${SECTSIZE} -t bootonroot:true"
 
 .device-sdm845:
   extends:
