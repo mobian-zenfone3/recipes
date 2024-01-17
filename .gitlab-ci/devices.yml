@@ -27,6 +27,7 @@
     - .arch-arm64
   variables:
     MOBIAN_DEVICE_FAMILY: "qcom"
+    MOBIAN_DEVICE_NAME: "qcom"
     MOBIAN_INCLUDE_NONFREE: "true"
   before_script:
     # Replicate the default before_script as we can't otherwise include it
@@ -41,18 +42,6 @@
     # Those are the qcom-specific bits
     - SECTSIZE="$(tomlq -r '.bootimg.pagesize' devices/qcom/configs/${MOBIAN_DEVICE_NAME}.toml)"
     - MOBIAN_EXTRA_DEBOS_ARGS="-e MKE2FS_DEVICE_SECTSIZE:${SECTSIZE} -t bootonroot:true"
-
-.device-sdm845:
-  extends:
-    - .device-qcom
-  variables:
-    MOBIAN_DEVICE_NAME: "sdm845"
-
-.device-sm7225:
-  extends:
-    - .device-qcom
-  variables:
-    MOBIAN_DEVICE_NAME: "sm7225"
 
 .device-amd64:
   extends:
