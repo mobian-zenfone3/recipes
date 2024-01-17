@@ -12,3 +12,5 @@ actions:
 {{ if $ssh }}
       - openssh-server
 {{ end }}
+      # Reason for this: it's @a-wai's preferred editor
+      - vim
