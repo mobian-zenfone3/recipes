@@ -29,15 +29,17 @@ for i in $(seq 0 $(tomlq -r '.device | length - 1' ${CONFIG})); do
     VENDOR=$(tomlq -r ".device[$i].vendor" ${CONFIG})
     MODEL=$(tomlq -r ".device[$i].model" ${CONFIG})
     VARIANT=$(tomlq -r "if .device[$i].variant then .device[$i].variant else \"\" end" ${CONFIG})
+    DEVICE_SOC=$(tomlq -r "if .device[$i].chipset then .device[$i].chipset else \"${SOC}\" end" ${CONFIG})
     APPEND=$(tomlq -r "if .device[$i].append then .device[$i].append else \"\" end" ${CONFIG})
 
-    CMDLINE="mobile.qcomsoc=qcom/${SOC} mobile.vendor=${VENDOR} mobile.model=${MODEL}"
+    CMDLINE="mobile.qcomsoc=qcom/${DEVICE_SOC} mobile.vendor=${VENDOR} mobile.model=${MODEL}"
     if [ "${VARIANT}" ]; then
         CMDLINE="${CMDLINE} mobile.variant=${VARIANT}"
         FULLMODEL="${MODEL}-${VARIANT}"
     else
         FULLMODEL="${MODEL}"
     fi
+    DTB_FILE="/usr/lib/linux-image-${KERNEL_VERSION}/qcom/${DEVICE_SOC}-${VENDOR}-${FULLMODEL}.dtb"
 
     # Include additional cmdline args if specified
     if [ "${APPEND}" ]; then
@@ -46,8 +48,7 @@ for i in $(seq 0 $(tomlq -r '.device | length - 1' ${CONFIG})); do
 
     # Append DTB to kernel
     echo "Creating boot image for ${FULLMODEL}..."
-    cat /boot/vmlinuz-${KERNEL_VERSION} \
-        /usr/lib/linux-image-${KERNEL_VERSION}/qcom/${SOC}-${VENDOR}-${FULLMODEL}.dtb > /tmp/kernel-dtb
+    cat /boot/vmlinuz-${KERNEL_VERSION} ${DTB_FILE} > /tmp/kernel-dtb
 
     # Create the bootimg as it's the only format recognized by the Android bootloader
     abootimg --create /bootimg-${FULLMODEL} \

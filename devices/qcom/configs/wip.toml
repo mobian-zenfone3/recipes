@@ -27,6 +27,9 @@ pagesize = 0
 [[device]]
 vendor = ""
 model = ""
+# OPTIONAL: uncomment if this device uses a different SoC than the one mentioned
+# in the top-level `chipset` variable (or if this top-level variable is missing)
+# chipset = ""
 # OPTIONAL: uncomment if there are several variants of the same model needing
 # different device-tree files (e.q. "xiaomi-beryllium" has variants "ebbg" and
 # "tianma")
