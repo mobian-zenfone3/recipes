@@ -1,0 +1,41 @@
+chipset = "sdm845"
+
+[bootimg]
+base = 0x0
+kernel = 0x8000
+ramdisk = 0x1000000
+second = 0
+tags = 0x100
+pagesize = 4096
+
+[[device]]
+vendor = "oneplus"
+model = "enchilada"
+
+[[device]]
+vendor = "oneplus"
+model = "fajita"
+
+[[device]]
+vendor = "shift"
+model = "axolotl"
+
+[[device]]
+vendor = "xiaomi"
+model = "beryllium"
+variant = "ebbg"
+
+[[device]]
+vendor = "xiaomi"
+model = "beryllium"
+variant = "tianma"
+
+[[device]]
+vendor = "xiaomi"
+model = "polaris"
+
+[[device]]
+vendor = "fairphone"
+model = "fp4"
+chipset = "sm7225"
+append = "sdhci.debug_quirks=0x40"
