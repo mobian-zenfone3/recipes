@@ -32,8 +32,3 @@ vendor = "xiaomi"
 model = "beryllium"
 variant = "tianma"
 append = "console=ttyMSM0,115200"
-
-[[device]]
-vendor = "xiaomi"
-model = "polaris"
-append = "console=ttyMSM0,115200"
