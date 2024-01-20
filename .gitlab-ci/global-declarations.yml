@@ -60,3 +60,7 @@ variables:
 .shell-phosh:
   variables:
     MOBIAN_GRAPHICAL_SHELL: "phosh"
+
+.shell-plasma-mobile:
+  variables:
+    MOBIAN_GRAPHICAL_SHELL: "plasma-mobile"
