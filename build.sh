@@ -89,15 +89,13 @@ case "${device}" in
     SECTSIZE="$(tomlq -r '.bootimg.pagesize' devices/qcom/configs/${device}.toml)"
     ARGS="${ARGS} -e MKE2FS_DEVICE_SECTSIZE:${SECTSIZE} -t nonfree:true -t bootonroot:true"
     ;;
-  "amd64" )
+  "amd64"|"amd64-free" )
     arch="amd64"
     family="amd64"
     ARGS="${ARGS} -t imagesize:15GB -t installersize:10GB"
-    ;;
-  "amd64-nonfree" )
-    arch="amd64"
-    family="amd64"
-    ARGS="${ARGS} -t nonfree:true -t imagesize:15GB -t installersize:10GB"
+    if [ "${device}" = "amd64" ]; then
+      ARGS="${ARGS} -t nonfree:true"
+    fi
     ;;
   * )
     echo "Unsupported device '${device}'"
