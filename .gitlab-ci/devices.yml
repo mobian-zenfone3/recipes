@@ -59,10 +59,4 @@
     - .arch-amd64
   variables:
     MOBIAN_DEVICE_NAME: "amd64"
-
-.device-amd64-nonfree:
-  extends:
-    - .arch-amd64
-  variables:
-    MOBIAN_DEVICE_NAME: "amd64-nonfree"
     MOBIAN_INCLUDE_NONFREE: "true"
