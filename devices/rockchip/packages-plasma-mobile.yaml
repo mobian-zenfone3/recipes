@@ -8,7 +8,7 @@ actions:
     recommends: false
     description: Install device-specific packages for Plasma Mobile
     packages:
-{{ if eq $device "pinephonepro" }}
+{{ if ne $device "pinetab2" }}
       - mobian-plasma-mobile-phone
       - firefox-esr-mobile-config
 {{ end }}

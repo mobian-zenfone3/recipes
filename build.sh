@@ -69,20 +69,13 @@ do
 done
 
 case "${device}" in
-  "pinephone" )
+  "pinephone"|"pinetab"|"sunxi" )
     family="sunxi"
     ARGS="${ARGS} -t nonfree:true"
     ;;
-  "pinephonepro" )
+  "pinephonepro"|"pinetab2"|"rockchip" )
     family="rockchip"
     ARGS="${ARGS} -t nonfree:true"
-    ;;
-  "pinetab" )
-    family="sunxi"
-    ARGS="${ARGS} -t nonfree:true"
-    ;;
-  "pinetab2" )
-    family="rockchip"
     ;;
   "librem5" )
     family="librem5"

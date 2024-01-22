@@ -48,114 +48,66 @@ devicefs-librem5-plasma-mobile:
   needs:
     - rootfs-arm64-plasma-mobile
 
-devicefs-pinephone-phosh:
+devicefs-sunxi-phosh:
   extends:
     - .devicefs
-    - .device-pinephone
+    - .device-sunxi
     - .shell-phosh
   needs:
     - rootfs-arm64-phosh
 
-devicefs-pinephone-plasma-mobile:
+devicefs-sunxi-plasma-mobile:
   extends:
     - .devicefs
-    - .device-pinephone
+    - .device-sunxi
     - .shell-plasma-mobile
   needs:
     - rootfs-arm64-plasma-mobile
 
-devicefs-pinephonepro-phosh:
+devicefs-rockchip-phosh:
   extends:
     - .devicefs
-    - .device-pinephonepro
+    - .device-rockchip
     - .shell-phosh
   needs:
     - rootfs-arm64-phosh
 
-devicefs-pinephonepro-plasma-mobile:
+devicefs-rockchip-plasma-mobile:
   extends:
     - .devicefs
-    - .device-pinephonepro
+    - .device-rockchip
     - .shell-plasma-mobile
   needs:
     - rootfs-arm64-plasma-mobile
 
-#devicefs-pinetab-phosh:
-#  extends:
-#    - .devicefs
-#    - .device-pinetab
-#    - .shell-phosh
-#  needs:
-#    - rootfs-arm64-phosh
-
-devicefs-pinetab2-phosh:
- extends:
-   - .devicefs
-   - .device-pinetab2
-   - .shell-phosh
- needs:
-   - rootfs-arm64-phosh
-
-devicefs-pinetab2-plasma-mobile:
- extends:
-   - .devicefs
-   - .device-pinetab2
-   - .shell-plasma-mobile
- needs:
-   - rootfs-arm64-plasma-mobile
-
-image-pinephone-phosh:
+image-sunxi-phosh:
   extends:
     - .image
-    - .device-pinephone
+    - .device-sunxi
     - .shell-phosh
   needs:
     - rootfs-arm64-phosh
 
-image-pinephone-plasma-mobile:
+image-sunxi-plasma-mobile:
   extends:
     - .image
-    - .device-pinephone
+    - .device-sunxi
     - .shell-plasma-mobile
   needs:
     - rootfs-arm64-plasma-mobile
 
-image-pinephonepro-phosh:
+image-rockchip-phosh:
   extends:
     - .image
-    - .device-pinephonepro
+    - .device-rockchip
     - .shell-phosh
   needs:
     - rootfs-arm64-phosh
 
-image-pinephonepro-plasma-mobile:
+image-rockchip-plasma-mobile:
   extends:
     - .image
-    - .device-pinephonepro
-    - .shell-plasma-mobile
-  needs:
-    - rootfs-arm64-plasma-mobile
-
-#image-pinetab-phosh:
-#  extends:
-#    - .image
-#    - .device-pinetab
-#    - .shell-phosh
-#  needs:
-#    - rootfs-arm64-phosh
-
-image-pinetab2-phosh:
-  extends:
-    - .image
-    - .device-pinetab2
-    - .shell-phosh
-  needs:
-    - rootfs-arm64-phosh
-
-image-pinetab2-plasma-mobile:
-  extends:
-    - .image
-    - .device-pinetab2
+    - .device-rockchip
     - .shell-plasma-mobile
   needs:
     - rootfs-arm64-plasma-mobile
@@ -258,65 +210,38 @@ installer-librem5-plasma-mobile:
     - installfs-arm64
     - devicefs-librem5-plasma-mobile
 
-installer-pinephone-phosh:
+installer-sunxi-phosh:
   extends:
     - .installer
-    - .device-pinephone
+    - .device-sunxi
     - .shell-phosh
   needs:
     - installfs-arm64
-    - devicefs-pinephone-phosh
+    - devicefs-sunxi-phosh
 
-installer-pinephone-plasma-mobile:
+installer-sunxi-plasma-mobile:
   extends:
     - .installer
-    - .device-pinephone
+    - .device-sunxi
     - .shell-plasma-mobile
   needs:
     - installfs-arm64
-    - devicefs-pinephone-plasma-mobile
+    - devicefs-sunxi-plasma-mobile
 
-installer-pinephonepro-phosh:
+installer-rockchip-phosh:
   extends:
     - .installer
-    - .device-pinephonepro
+    - .device-rockchip
     - .shell-phosh
   needs:
     - installfs-arm64
-    - devicefs-pinephonepro-phosh
+    - devicefs-rockchip-phosh
 
-installer-pinephonepro-plasma-mobile:
+installer-rockchip-plasma-mobile:
   extends:
     - .installer
-    - .device-pinephonepro
+    - .device-rockchip
     - .shell-plasma-mobile
   needs:
     - installfs-arm64
-    - devicefs-pinephonepro-plasma-mobile
-
-#installer-pinetab-phosh:
-#  extends:
-#    - .installer
-#    - .device-pinetab
-#    - .shell-phosh
-#  needs:
-#    - installfs-arm64
-#    - devicefs-pinetab-phosh
-
-installer-pinetab2-phosh:
- extends:
-   - .installer
-   - .device-pinetab2
-   - .shell-phosh
- needs:
-   - installfs-arm64
-   - devicefs-pinetab2-phosh
-
-installer-pinetab2-plasma-mobile:
- extends:
-   - .installer
-   - .device-pinetab2
-   - .shell-plasma-mobile
- needs:
-   - installfs-arm64
-   - devicefs-pinetab2-plasma-mobile
+    - devicefs-rockchip-plasma-mobile
