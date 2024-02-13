@@ -14,8 +14,7 @@ actions:
       - endeavour
       - evince
       - firefox-esr
-      # Temporary hack until geary returns to testing
-      # - geary
+      - geary
       - gnome-calculator
       - gnome-calendar
       - gnome-console
