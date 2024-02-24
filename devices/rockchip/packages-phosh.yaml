@@ -12,4 +12,4 @@ actions:
       - mobian-phosh-phone
       - firefox-esr-mobile-config
 {{ end }}
-      - snapshot
+      - gnome-snapshot
