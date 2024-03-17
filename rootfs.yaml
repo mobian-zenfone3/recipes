@@ -10,6 +10,7 @@
 {{- $debian_suite := or .debian_suite "trixie" -}}
 {{- $suite := or .suite $debian_suite -}}
 {{- $rootfs := or .rootfs "rootfs.tar.gz" }}
+{{- $mirror := or .mirror "http://deb.debian.org/debian" -}}
 
 architecture: {{ $architecture }}
 
@@ -24,7 +25,7 @@ actions:
 {{ if eq $nonfree "true" }}
       - non-free-firmware
 {{ end }}
-    mirror: http://deb.debian.org/debian
+    mirror: {{ $mirror }}
     variant: minbase
 
   - action: run

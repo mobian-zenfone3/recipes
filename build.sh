@@ -21,6 +21,7 @@ image_only=
 installer=
 zram=
 memory=
+mirror=
 password=
 use_docker=
 username=
@@ -33,7 +34,7 @@ sign=
 miniramfs=
 verbose=
 
-while getopts "cdDvizobsZCrR:x:S:e:H:f:g:h:m:p:t:u:F:" opt
+while getopts "cdDvizobsZCrR:x:S:e:H:f:g:h:m:M:p:t:u:F:" opt
 do
   case "${opt}" in
     c ) crypt_root=1 ;;
@@ -52,6 +53,7 @@ do
     f ) ftp_proxy="${OPTARG}" ;;
     h ) http_proxy="${OPTARG}" ;;
     g ) sign="${OPTARG}" ;;
+    M ) mirror="${OPTARG}" ;;
     m ) memory="${OPTARG}" ;;
     p ) password="${OPTARG}" ;;
     t ) device="${OPTARG}" ;;
@@ -141,6 +143,7 @@ fi
 [ "${http_proxy}" ] && ARGS="${ARGS} -e http_proxy:${http_proxy}"
 [ "${ftp_proxy}" ] && ARGS="${ARGS} -e ftp_proxy:${ftp_proxy}"
 [ "${memory}" ] && ARGS="${ARGS} --memory ${memory}"
+[ "${mirror}" ] && ARGS="${ARGS} -t mirror:${mirror}"
 [ "${miniramfs}" ] && ARGS="${ARGS} -t miniramfs:true"
 [ "${contrib}" ] && ARGS="${ARGS} -t contrib:true"
 [ "${zram}" ] && ARGS="${ARGS} -t zram:true"
