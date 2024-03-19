@@ -53,6 +53,14 @@ actions:
     recipe: include/packages-fde.yaml
 {{ end }}
 
+{{ if eq $filesystem "btrfs" }}
+  - action: apt
+    recommends: false
+    description: Install btrfs progs
+    packages:
+      - btrfs-progs
+{{ end }}
+
 {{ if eq $filesystem "f2fs" }}
   - action: apt
     recommends: false
