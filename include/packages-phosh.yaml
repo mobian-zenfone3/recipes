@@ -19,6 +19,7 @@ actions:
       - gnome-console
       - gnome-maps
       - gnome-software
+      - gnome-software-plugin-deb
       - gnome-software-plugin-flatpak
       - gnome-sound-recorder
       - gnome-text-editor
