@@ -14,7 +14,7 @@ if [ "${ROOTPART}" = "UUID=" ]; then
     # This means we're using an encrypted rootfs
     ROOTPART="/dev/mapper/root"
 fi
-KERNEL_VERSION=$(linux-version list)
+KERNEL_VERSION=$(linux-version list | tail -1)
 
 # Parse config for generic parameters for the current SoC
 SOC=$(tomlq -r "if .chipset then .chipset else \"${DEVICE}\" end" ${CONFIG})
