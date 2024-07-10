@@ -28,15 +28,11 @@ actions:
     mirror: {{ $mirror }}
     variant: minbase
 
-  - action: run
-    description: Fix build on usr-merged systems
-    chroot: true
-    command: apt-get -y -f install
-
-  - action: run
+  - action: apt
     description: Install mobian-archive-keyring
-    chroot: true
-    command: apt-get -y install mobian-archive-keyring
+    recommends: false
+    packages:
+      - mobian-archive-keyring
 
   - action: overlay
     description: Enable Mobian repository
