@@ -9,6 +9,12 @@ apt-get clean
 rm -f /var/lib/dbus/machine-id
 echo uninitialized > /etc/machine-id
 
+# FIXME: remove unstable/experimental from apt sources (see setup-apt.sh)
+rm -f /etc/apt/sources.list.d/unstable.list \
+      /etc/apt/sources.list.d/experimental.list \
+      /etc/apt/preferences.d/10-unstable-priority \
+      /etc/apt/preferences.d/20-experimental-priority
+
 # FIXME: these are automatically installed on first boot, and block
 # the system startup for over 1 minute! Find out why this happens and
 # avoid this nasty hack
