@@ -9,6 +9,7 @@ actions:
     packages:
       - mobian-phosh
       # Additional software we don't want metapackages to depend on
+      - chatty
       - endeavour
       - epiphany-browser
       - evince
@@ -34,8 +35,6 @@ actions:
       - portfolio-filemanager
       - powersupply-gtk
       - webext-ublock-origin-firefox
-      # Temporary workaround until chatty returns to bookworm
-      - chatty
 
   - action: run
     description: Disable getty in the Phosh environment
