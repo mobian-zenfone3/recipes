@@ -13,20 +13,13 @@ COMPONENTS="main"
 if [ "$DEBIAN_SUITE" = "bullseye" ] || [ "$DEBIAN_SUITE" = "bookworm" ]; then
     echo "deb http://security.debian.org/ $DEBIAN_SUITE-security $COMPONENTS" >> /etc/apt/sources.list
 # Temporary hack: add unstable as a lower priority source to install packages removed from testing
-else
+elif [ "$DEBIAN_SUITE" != "unstable" ]; then
     echo "deb http://deb.debian.org/debian unstable $COMPONENTS" >> /etc/apt/sources.list.d/unstable.list
-    echo "deb http://deb.debian.org/debian experimental $COMPONENTS" >> /etc/apt/sources.list.d/experimental.list
 
     cat > /etc/apt/preferences.d/10-unstable-priority << EOF
 Package: *
 Pin: release a=unstable
 Pin-Priority: 200
-EOF
-
-    cat > /etc/apt/preferences.d/20-experimental-priority << EOF
-Package: *
-Pin: release a=experimental
-Pin-Priority: 250
 EOF
 fi
 
