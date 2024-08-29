@@ -23,6 +23,9 @@ are required, which you can install with the following command:
 sudo apt install android-sdk-libsparse-utils yq
 ```
 
+Encrypted file systems will also require the package `cryptsetup` to be installed
+on your host.
+
 Do note that we recommend using Debian 12 (Bookworm) as previous versions didn't
 include the `yq` package.
 
