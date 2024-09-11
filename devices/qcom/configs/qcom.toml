@@ -27,13 +27,11 @@ append = "console=ttyMSM0,115200"
 vendor = "xiaomi"
 model = "beryllium"
 variant = "ebbg"
-append = "console=ttyMSM0,115200"
 
 [[device]]
 vendor = "xiaomi"
 model = "beryllium"
 variant = "tianma"
-append = "console=ttyMSM0,115200"
 
 [[device]]
 vendor = "fairphone"
