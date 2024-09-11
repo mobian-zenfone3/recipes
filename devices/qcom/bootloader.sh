@@ -41,9 +41,13 @@ for i in $(seq 0 $(tomlq -r '.device | length - 1' ${CONFIG})); do
     fi
     DTB_FILE="/usr/lib/linux-image-${KERNEL_VERSION}/qcom/${DEVICE_SOC}-${VENDOR}-${FULLMODEL}.dtb"
 
+    LOGLEVEL="quiet"
     # Include additional cmdline args if specified
     if [ "${APPEND}" ]; then
         CMDLINE="${CMDLINE} ${APPEND}"
+        if echo "${APPEND}" | grep -q "console="; then
+            LOGLEVEL="loglevel=7"
+        fi
     fi
 
     # Append DTB to kernel
@@ -54,6 +58,6 @@ for i in $(seq 0 $(tomlq -r '.device | length - 1' ${CONFIG})); do
     abootimg --create /bootimg-${FULLMODEL} \
         -c kerneladdr=${KERNEL_ADDR} -c ramdiskaddr=${RAMDISK_ADDR} \
         -c secondaddr=${SECOND_ADDR} -c tagsaddr=${TAGS_ADDR} -c pagesize=${PAGE_SIZE} \
-        -c cmdline="mobile.root=${ROOTPART} ${CMDLINE} init=/sbin/init ro quiet splash" \
+        -c cmdline="mobile.root=${ROOTPART} ${CMDLINE} init=/sbin/init ro ${LOGLEVEL} splash" \
         -k /tmp/kernel-dtb -r /boot/initrd.img-${KERNEL_VERSION}
 done
