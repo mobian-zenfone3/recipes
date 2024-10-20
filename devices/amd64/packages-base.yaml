@@ -20,8 +20,6 @@ actions:
       - firmware-ast
       - firmware-ath9k-htc
       - firmware-atheros
-      - firmware-b43-installer
-      - firmware-b43legacy-installer
       - firmware-bnx2
       - firmware-bnx2x
       - firmware-brcm80211
@@ -30,8 +28,6 @@ actions:
       - firmware-intel-graphics
       - firmware-intel-misc
       - firmware-intel-sound
-      - firmware-ipw2x00
-      - firmware-ivtv
       - firmware-iwlwifi
       - firmware-libertas
       - firmware-linux-free
