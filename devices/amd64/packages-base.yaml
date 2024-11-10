@@ -23,6 +23,7 @@ actions:
       - firmware-bnx2
       - firmware-bnx2x
       - firmware-brcm80211
+      - firmware-carl9170
       - firmware-cavium
       - firmware-cirrus
       - firmware-intel-graphics
@@ -40,7 +41,6 @@ actions:
       - firmware-nvidia-graphics
       - firmware-qlogic
       - firmware-realtek
-      - firmware-realtek-rtl8723cs-bt
       - firmware-siano
       - firmware-sof-signed
       - firmware-zd1211
