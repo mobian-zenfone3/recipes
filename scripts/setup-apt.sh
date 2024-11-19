@@ -12,15 +12,6 @@ COMPONENTS="main"
 # Add debian-security for bullseye & bookworm; note that only the main component is supported
 if [ "$DEBIAN_SUITE" = "bullseye" ] || [ "$DEBIAN_SUITE" = "bookworm" ]; then
     echo "deb http://security.debian.org/ $DEBIAN_SUITE-security $COMPONENTS" >> /etc/apt/sources.list
-# Temporary hack: add unstable as a lower priority source to install packages removed from testing
-elif [ "$DEBIAN_SUITE" != "unstable" ]; then
-    echo "deb http://deb.debian.org/debian unstable $COMPONENTS" >> /etc/apt/sources.list.d/unstable.list
-
-    cat > /etc/apt/preferences.d/10-unstable-priority << EOF
-Package: *
-Pin: release a=unstable
-Pin-Priority: 200
-EOF
 fi
 
 # Set the proper suite in our sources.list

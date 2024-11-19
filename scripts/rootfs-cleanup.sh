@@ -9,10 +9,6 @@ apt-get clean
 rm -f /var/lib/dbus/machine-id
 echo uninitialized > /etc/machine-id
 
-# FIXME: remove unstable from apt sources (see setup-apt.sh)
-rm -f /etc/apt/sources.list.d/unstable.list \
-      /etc/apt/preferences.d/10-unstable-priority
-
 # FIXME: these are automatically installed on first boot, and block
 # the system startup for over 1 minute! Find out why this happens and
 # avoid this nasty hack
