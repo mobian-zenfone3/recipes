@@ -27,8 +27,7 @@ actions:
       - gnome-usage
       - gnome-weather
       - lollypop
-      # FIXME: loupe is currently broken in Debian, skip for now
-      # - loupe
+      - loupe
       - phog
       - phosh-mobile-settings
       - phosh-plugins
