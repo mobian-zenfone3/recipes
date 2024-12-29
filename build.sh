@@ -1,5 +1,7 @@
 #!/bin/sh
 
+set -e
+
 export PATH="/sbin:/usr/sbin:${PATH}"
 DEBOS_CMD=debos
 if [ -z "${ARGS+x}" ]; then
@@ -158,15 +160,15 @@ ARGS="${ARGS} -t architecture:${arch} -t family:${family} -t device:${device} \
 if [ ! "${image_only}" ] || [ ! -f "${rootfs_file}" ]; then
   # Ensure subsequent artifacts are rebuilt too
   rm -f "rootfs-${device}-${environment}.tar.gz"
-  ${DEBOS_CMD} ${ARGS} rootfs.yaml || exit 1
+  ${DEBOS_CMD} ${ARGS} rootfs.yaml
 fi
 
 if [ "$installer" ]; then
   if [ ! "${image_only}" ] || [ ! -f "${installfs_file}" ]; then
-    ${DEBOS_CMD} ${ARGS} installfs.yaml || exit 1
+    ${DEBOS_CMD} ${ARGS} installfs.yaml
   fi
   if [ ! "${image_only}" ] || [ ! -f "rootfs-${device}-${environment}.tar.gz" ]; then
-    ${DEBOS_CMD} ${ARGS} "rootfs-device.yaml" || exit 1
+    ${DEBOS_CMD} ${ARGS} "rootfs-device.yaml"
   fi
   # Convert rootfs tarball to squashfs for inclusion in the installer image
   zcat "rootfs-${device}-${environment}.tar.gz" | tar2sqfs "rootfs-${device}-${environment}.sqfs" > /dev/null 2>&1
