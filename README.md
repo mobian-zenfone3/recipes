@@ -20,7 +20,7 @@ If you want to build an image for a Qualcomm-based device, additional packages
 are required, which you can install with the following command:
 
 ```
-sudo apt install android-sdk-libsparse-utils yq
+sudo apt install android-sdk-libsparse-utils yq mkbootimg
 ```
 
 Building with disk encryption support will also require the package `cryptsetup` to be installed
