@@ -9,11 +9,11 @@ rootfs-amd64-phosh:
     - .arch-amd64
     - .shell-phosh
 
-# rootfs-amd64-plasma-mobile:
-#   extends:
-#     - .rootfs-generic
-#     - .arch-amd64
-#     - .shell-plasma-mobile
+rootfs-amd64-plasma-mobile:
+  extends:
+    - .rootfs-generic
+    - .arch-amd64
+    - .shell-plasma-mobile
 
 rootfs-arm64-phosh:
   extends:
@@ -21,11 +21,11 @@ rootfs-arm64-phosh:
     - .arch-arm64
     - .shell-phosh
 
-# rootfs-arm64-plasma-mobile:
-#   extends:
-#     - .rootfs-generic
-#     - .arch-arm64
-#     - .shell-plasma-mobile
+rootfs-arm64-plasma-mobile:
+  extends:
+    - .rootfs-generic
+    - .arch-arm64
+    - .shell-plasma-mobile
 
 installfs-arm64:
   extends:
@@ -40,13 +40,13 @@ devicefs-librem5-phosh:
   needs:
     - rootfs-arm64-phosh
 
-# devicefs-librem5-plasma-mobile:
-#   extends:
-#     - .devicefs
-#     - .device-librem5
-#     - .shell-plasma-mobile
-#   needs:
-#     - rootfs-arm64-plasma-mobile
+devicefs-librem5-plasma-mobile:
+  extends:
+    - .devicefs
+    - .device-librem5
+    - .shell-plasma-mobile
+  needs:
+    - rootfs-arm64-plasma-mobile
 
 devicefs-sunxi-phosh:
   extends:
@@ -56,13 +56,13 @@ devicefs-sunxi-phosh:
   needs:
     - rootfs-arm64-phosh
 
-# devicefs-sunxi-plasma-mobile:
-#   extends:
-#     - .devicefs
-#     - .device-sunxi
-#     - .shell-plasma-mobile
-#   needs:
-#     - rootfs-arm64-plasma-mobile
+devicefs-sunxi-plasma-mobile:
+  extends:
+    - .devicefs
+    - .device-sunxi
+    - .shell-plasma-mobile
+  needs:
+    - rootfs-arm64-plasma-mobile
 
 devicefs-rockchip-phosh:
   extends:
@@ -72,13 +72,13 @@ devicefs-rockchip-phosh:
   needs:
     - rootfs-arm64-phosh
 
-# devicefs-rockchip-plasma-mobile:
-#   extends:
-#     - .devicefs
-#     - .device-rockchip
-#     - .shell-plasma-mobile
-#   needs:
-#     - rootfs-arm64-plasma-mobile
+devicefs-rockchip-plasma-mobile:
+  extends:
+    - .devicefs
+    - .device-rockchip
+    - .shell-plasma-mobile
+  needs:
+    - rootfs-arm64-plasma-mobile
 
 image-sunxi-phosh:
   extends:
@@ -88,13 +88,13 @@ image-sunxi-phosh:
   needs:
     - rootfs-arm64-phosh
 
-# image-sunxi-plasma-mobile:
-#   extends:
-#     - .image
-#     - .device-sunxi
-#     - .shell-plasma-mobile
-#   needs:
-#     - rootfs-arm64-plasma-mobile
+image-sunxi-plasma-mobile:
+  extends:
+    - .image
+    - .device-sunxi
+    - .shell-plasma-mobile
+  needs:
+    - rootfs-arm64-plasma-mobile
 
 image-rockchip-phosh:
   extends:
@@ -104,13 +104,13 @@ image-rockchip-phosh:
   needs:
     - rootfs-arm64-phosh
 
-# image-rockchip-plasma-mobile:
-#   extends:
-#     - .image
-#     - .device-rockchip
-#     - .shell-plasma-mobile
-#   needs:
-#     - rootfs-arm64-plasma-mobile
+image-rockchip-plasma-mobile:
+  extends:
+    - .image
+    - .device-rockchip
+    - .shell-plasma-mobile
+  needs:
+    - rootfs-arm64-plasma-mobile
 
 image-librem5-phosh:
   extends:
@@ -120,13 +120,13 @@ image-librem5-phosh:
   needs:
     - rootfs-arm64-phosh
 
-# image-librem5-plasma-mobile:
-#   extends:
-#     - .image
-#     - .device-librem5
-#     - .shell-plasma-mobile
-#   needs:
-#     - rootfs-arm64-plasma-mobile
+image-librem5-plasma-mobile:
+  extends:
+    - .image
+    - .device-librem5
+    - .shell-plasma-mobile
+  needs:
+    - rootfs-arm64-plasma-mobile
 
 image-qcom-phosh:
   extends:
@@ -136,13 +136,13 @@ image-qcom-phosh:
   needs:
     - rootfs-arm64-phosh
 
-# image-qcom-plasma-mobile:
-#   extends:
-#     - .image
-#     - .device-qcom
-#     - .shell-plasma-mobile
-#   needs:
-#     - rootfs-arm64-plasma-mobile
+image-qcom-plasma-mobile:
+  extends:
+    - .image
+    - .device-qcom
+    - .shell-plasma-mobile
+  needs:
+    - rootfs-arm64-plasma-mobile
 
 image-amd64-phosh:
   extends:
@@ -152,13 +152,13 @@ image-amd64-phosh:
   needs:
     - rootfs-amd64-phosh
 
-# image-amd64-plasma-mobile:
-#   extends:
-#     - .image
-#     - .device-amd64
-#     - .shell-plasma-mobile
-#   needs:
-#     - rootfs-amd64-plasma-mobile
+image-amd64-plasma-mobile:
+  extends:
+    - .image
+    - .device-amd64
+    - .shell-plasma-mobile
+  needs:
+    - rootfs-amd64-plasma-mobile
 
 installer-librem5-phosh:
   extends:
@@ -169,14 +169,14 @@ installer-librem5-phosh:
     - installfs-arm64
     - devicefs-librem5-phosh
 
-# installer-librem5-plasma-mobile:
-#   extends:
-#     - .installer
-#     - .device-librem5
-#     - .shell-plasma-mobile
-#   needs:
-#     - installfs-arm64
-#     - devicefs-librem5-plasma-mobile
+installer-librem5-plasma-mobile:
+  extends:
+    - .installer
+    - .device-librem5
+    - .shell-plasma-mobile
+  needs:
+    - installfs-arm64
+    - devicefs-librem5-plasma-mobile
 
 installer-sunxi-phosh:
   extends:
@@ -187,14 +187,14 @@ installer-sunxi-phosh:
     - installfs-arm64
     - devicefs-sunxi-phosh
 
-# installer-sunxi-plasma-mobile:
-#   extends:
-#     - .installer
-#     - .device-sunxi
-#     - .shell-plasma-mobile
-#   needs:
-#     - installfs-arm64
-#     - devicefs-sunxi-plasma-mobile
+installer-sunxi-plasma-mobile:
+  extends:
+    - .installer
+    - .device-sunxi
+    - .shell-plasma-mobile
+  needs:
+    - installfs-arm64
+    - devicefs-sunxi-plasma-mobile
 
 installer-rockchip-phosh:
   extends:
@@ -205,11 +205,11 @@ installer-rockchip-phosh:
     - installfs-arm64
     - devicefs-rockchip-phosh
 
-# installer-rockchip-plasma-mobile:
-#   extends:
-#     - .installer
-#     - .device-rockchip
-#     - .shell-plasma-mobile
-#   needs:
-#     - installfs-arm64
-#     - devicefs-rockchip-plasma-mobile
+installer-rockchip-plasma-mobile:
+  extends:
+    - .installer
+    - .device-rockchip
+    - .shell-plasma-mobile
+  needs:
+    - installfs-arm64
+    - devicefs-rockchip-plasma-mobile
