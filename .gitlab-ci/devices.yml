@@ -57,6 +57,12 @@
     - MOBIAN_EXTRA_DEBOS_ARGS="-e MKE2FS_DEVICE_SECTSIZE:${SECTSIZE} -t bootonroot:true"
   rules: *job_rules
 
+.device-sdm670:
+  extends:
+    - .device-qcom
+  variables:
+    MOBIAN_DEVICE_NAME: "sdm670"
+
 .device-amd64:
   extends:
     - .arch-amd64
