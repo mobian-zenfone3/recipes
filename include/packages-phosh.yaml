@@ -12,7 +12,6 @@ actions:
       - chatty
       - endeavour
       - epiphany-browser
-      - evince
       - firefox-esr
       - geary
       - gnome-calculator
@@ -28,6 +27,7 @@ actions:
       - gnome-weather
       - lollypop
       - loupe
+      - papers
       - phog
       - phosh-mobile-settings
       - phosh-plugins
