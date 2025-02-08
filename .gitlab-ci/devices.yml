@@ -63,6 +63,12 @@
   variables:
     MOBIAN_DEVICE_NAME: "sdm670"
 
+.device-sc7280:
+  extends:
+    - .device-qcom
+  variables:
+    MOBIAN_DEVICE_NAME: "sc7280"
+
 .device-amd64:
   extends:
     - .arch-amd64

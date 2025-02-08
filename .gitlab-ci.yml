@@ -160,6 +160,22 @@ image-sdm670-plasma-mobile:
   needs:
     - rootfs-arm64-plasma-mobile
 
+image-sc7280-phosh:
+  extends:
+    - .image
+    - .device-sc7280
+    - .shell-phosh
+  needs:
+    - rootfs-arm64-phosh
+
+image-sc7280-plasma-mobile:
+  extends:
+    - .image
+    - .device-sc7280
+    - .shell-plasma-mobile
+  needs:
+    - rootfs-arm64-plasma-mobile
+
 image-amd64-phosh:
   extends:
     - .image
