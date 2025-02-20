@@ -1,9 +1,7 @@
-# mobian-recipes
+# recipes
 
 A set of [debos](https://github.com/go-debos/debos) recipes for building a
-debian-based image for mobile phones, initially targetting Pine64's PinePhone.
-
-Prebuilt images are available [here](http://images.mobian.org/).
+Debian-based image for the Asus Zenfone 3 (ZE520KL/ZE552KL).
 
 The default user is `mobian` with password `1234`.
 
@@ -26,7 +24,7 @@ sudo apt install android-sdk-libsparse-utils yq mkbootimg
 Building with disk encryption support will also require the package `cryptsetup` to be installed
 on your host.
 
-Do note that we recommend using Debian 12 (Bookworm) as previous versions didn't
+Do note that we recommend using Debian 13 (Trixie) as previous versions didn't
 include the `yq` package.
 
 Similarly, if you want to use F2FS for the root filesystem (which isn't such a
@@ -43,38 +41,14 @@ following required packages:
 - `qemu-system-x86`
 - `qemu-user-static`
 - `binfmt-support`
-- `squashfs-tools-ng` (only required for generating installer images)
 
-Then simply browse to the `mobian-recipes` folder and execute `./build.sh`.
+Then simply browse to the `mobian-recipes` folder and execute `./build.sh -t qcom-wip`.
 
-You can use `./build.sh -d` to use the docker version of `debos`.
-
-### Building QEMU image
-
-You can build a QEMU x86_64 image by adding the `-t amd64` flag to `build.sh`
-
-The resulting files are raw images. You can start qemu like so:
-
-```
-qemu-system-x86_64 -drive format=raw,file=<imagefile.img> -enable-kvm \
-    -cpu host -vga virtio -m 2048 -smp cores=4 \
-    -drive if=pflash,format=raw,readonly=on,file=/usr/share/OVMF/OVMF_CODE.fd
-```
-
-UEFI firmware files are available in Debian thanks to the
-[OVMF](https://packages.debian.org/sid/all/ovmf/filelist) package.
-Comprehensive explanation about firmware files can be found at
-[OVMF project's repository](https://github.com/tianocore/edk2/tree/master/OvmfPkg).
-
-You may also want to convert the raw image to qcow2 format
-and resize it like this:
-
-```
-qemu-img convert -f raw -O qcow2 <raw_image.img> <qcow_image.qcow2>
-qemu-img resize -f qcow2 <qcow_image.qcow2> +20G
-```
+You can use `./build.sh -d -t qcom-wip` to use the docker version of `debos`.
 
 ## Install
+
+> TODO: Write lk2nd-specific install steps
 
 Insert a MicroSD card into your computer, and type the following command:
 
@@ -100,7 +74,7 @@ If you want to help with this project, please have a look at the
 [open issues](https://salsa.debian.org/Mobian-team/mobian-recipes/-/issues).
 
 In case you need more information, feel free to get in touch with the developers
-on [#mobian:matrix.org](https://matrix.to/#/#mobian:matrix.org).
+on [#mobian:matrix.org](https://matrix.to/#/#mobian:matrix.org)
 
 # License
 
